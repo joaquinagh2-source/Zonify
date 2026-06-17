@@ -16,3 +16,15 @@ def inicio():
         eventos=eventos_cache
     )
 
+
+@app.route("/actualizar") #Basicamente esto sirve para actualizar los datos una vez el usuario ya lleva cierto tiempo en la pagina
+def actualizar():
+    global eventos_cache
+
+    eventos_cache = obtener_eventos_cosevi()
+
+    return redirect(url_for("inicio"))
+
+
+if __name__ == "__main__": #Esto es lo que enciende el saervidor, que hace que solo arranque la web si se ejecuto el archivo desde la terminal
+    app.run(debug=True)
