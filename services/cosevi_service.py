@@ -1,7 +1,7 @@
 import os
 import requests
 from dotenv import load_dotenv
-
+#Este código lo que hace es conectarse al API de COSEVI para extraer los datos de accidentes en Costa Rica, los organiza en un formato limpio de filas y columnas, y devuelve una lista con los 20 reportes más recientes.
 load_dotenv()
 
 
