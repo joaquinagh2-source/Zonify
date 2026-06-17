@@ -1,5 +1,6 @@
-from flask import Flask, render_template, redirect, url_for #El flask es lo que deja crear el servidor web, el render template es lo que comina los archivos html y combinarlos con los datos que recibe python para mostrarlos bien al usuario y el redirect y el urlfor sirven para que si pasa un evento, lo mande rapido a la pagina.
+from flask import Flask, render_template, redirect, url_for, request #El flask es lo que deja crear el servidor web, el render template es lo que comina los archivos html y combinarlos con los datos que recibe python para mostrarlos bien al usuario y el redirect y el urlfor sirven para que si pasa un evento, lo mande rapido a la pagina.
 from services.cosevi_service import obtener_eventos_cosevi #esta linea hace que del codigo de cosevi service, generado junto al api publico de cosevi y ayuda de ia, jale la definicion que se usa para otener los datos de la api 
+from geopy.geocoders import Nominatim
 
 app = Flask(__name__) #basicamente esta linea sirve para que el servidor web exista
 eventos_cache = [] #Es una lista vacia en la RAM que es para guardar datos temporalmente y hacer la web mas rapida
@@ -25,6 +26,41 @@ def actualizar():
 
     return redirect(url_for("inicio"))
 
+
+@app.route("/ubicacion")
+def detectar_provincia():
+    #Aqui agarramos las cordenadas del ususario
+    lat = request.args.get("lat")
+    lon = request.args.get("lon")
+
+    if not lat or not lon:
+        return redirect(url_for("inicio"))#Esto es para que si falla lo mande al inicio normal
+
+    try:
+        geolocator = Nominatim(user_agent="zonify_cr")
+        ubicacion_completa = geolocator.reverse(f"{lat}, {lon}")
+
+        direccion = ubicacion_completa.raw.get("address", {})
+        provincia_detectada = direccion.get("state", "No disponible")
+
+        global eventos_cache
+        if not eventos_cache:
+            eventos_cache = obtener_eventos_cosevi()
+
+
+        eventos_filtrados = []
+        for evento in eventos_cache:
+
+            if evento ["provincia"].lower() in provincia_detectada.lower():
+                eventos_filtrados.append(evento)
+
+        if eventos_filtrados:
+            return render_template("index.html", eventos=eventos_filtrados, provincia=provincia_detectada)
+
+    except Exception as e:
+        print("Error detectando ubicacion", e)
+
+    return redirect(url_for("inicio"))
 
 if __name__ == "__main__": #Esto es lo que enciende el saervidor, que hace que solo arranque la web si se ejecuto el archivo desde la terminal
     app.run(debug=True)

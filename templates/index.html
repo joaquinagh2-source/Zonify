@@ -3,18 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zonify</title>
-    <div class="acciones">
-        <a href="/actualizar" class="btn-actualizar">
-            Actualizar datos de COSEVI
-        </a>
-    </div>
-
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 
 <body>
-    <header>
-        <h1>Zonify</h1>
-        <p>Información oficial de COSEVI</p>
+
+    <header class="encabezado">
+        <div>
+            <p class="etiqueta">CNFL · Datos en tiempo real</p>
+            <h1>Zonify</h1>
+            <p class="subtitulo">Averías eléctricas activas en Costa Rica</p>
+        </div>
+
+        <a href="{{ url_for('actualizar') }}" class="btn-actualizar">
+            Actualizar
+        </a>
     </header>
+    <main>
+        <section class="metricas" aria-label="Resumen de averías">
+            <div class="metrica">
+                <span class="metrica-label">Averías activas</span>
+                <strong>{{ averias|length }}</strong>
+            </div>
+            <div class="metrica">
+                <span class="metrica-label">Clientes afectados</span>
+                <strong>{{ total_clientes }}</strong>
+            </div>
+            <div class="metrica">
+                <span class="metrica-label">Fuente</span>
+                <strong>CNFL ArcGIS</strong>
+            </div>
+        </section>
