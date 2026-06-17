@@ -4,3 +4,15 @@ from services.cosevi_service import obtener_eventos_cosevi #esta linea hace que 
 app = Flask(__name__) #basicamente esta linea sirve para que el servidor web exista
 eventos_cache = [] #Es una lista vacia en la RAM que es para guardar datos temporalmente y hacer la web mas rapida
 
+@app.route("/") #apenas el usuario entre, esto hace que se ejecute la funcion de inicio, la cual tiene que ver con lo que ve el usuario en el html
+def inicio():
+    global eventos_cache #Le avisa a python que vamos a usar la lista creada anterior mente al ejecutar la funcion
+
+    if not eventos_cache: #Esta linea lo que hace es preguntar si la lista esta vacia o no, si la respuesta es si va, y jala la funcion de obtener datos cosevi
+        eventos_cache = obtener_eventos_cosevi()
+
+    return render_template( # Esto es lo que hace que se le muestre al usuario. Toma html y le manda la lista de accidentes que tenemos guardada o de la api de cosevi 
+        "index.html",
+        eventos=eventos_cache
+    )
+
