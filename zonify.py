@@ -37,27 +37,27 @@ def detectar_provincia():
         return redirect(url_for("inicio"))#Esto es para que si falla lo mande al inicio normal
 
     try:
-        geolocator = Nominatim(user_agent="zonify_cr")
+        geolocator = Nominatim(user_agent="zonify_cr")# Esto basicamente es un traductor de cordenadas que hace que se pueda ubicar donde se encuentra el usuario en base a esas cordenadas
         ubicacion_completa = geolocator.reverse(f"{lat}, {lon}")
 
-        direccion = ubicacion_completa.raw.get("address", {})
+        direccion = ubicacion_completa.raw.get("address", {})#Extramos la provincia que se consiguieron con la traduccion
         provincia_detectada = direccion.get("state", "No disponible")
 
-        global eventos_cache
+        global eventos_cache #Filtramos los eventos de nuestra caché usando la provincia
         if not eventos_cache:
             eventos_cache = obtener_eventos_cosevi()
 
 
-        eventos_filtrados = []
+        eventos_filtrados = [] #Esto limpia el texto para que coincida con el formato del API de  COSEVI
         for evento in eventos_cache:
 
-            if evento ["provincia"].lower() in provincia_detectada.lower():
+            if evento ["provincia"].lower() in provincia_detectada.lower(): #Si la provincia del usuario, coincide con la del evento se agrega a la lista de los eventos
                 eventos_filtrados.append(evento)
 
-        if eventos_filtrados:
+        if eventos_filtrados:   #Si hay accidentes en esta provincia los mostramos de primeros
             return render_template("index.html", eventos=eventos_filtrados, provincia=provincia_detectada)
 
-    except Exception as e:
+    except Exception as e:#En caso de error redireccionar al arranque de inicio
         print("Error detectando ubicacion", e)
 
     return redirect(url_for("inicio"))
