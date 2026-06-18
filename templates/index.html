@@ -36,3 +36,25 @@
                 <strong>CNFL ArcGIS</strong>
             </div>
         </section>
+        {% if error %}
+        <section class="alerta">
+            <strong>No se pudieron cargar las averías.</strong>
+            <span>{{ error }}</span>
+        </section>
+        
+        {% endif %}
+
+        {% if averias %}
+        <section class="lista-averias" aria-label="Listado de averías">
+            {% for averia in averias %}
+            <article class="tarjeta">
+                <div class="tarjeta-header">
+                    <div>
+                        <span class="id-incidente">{{ averia.id or "Sin ID" }}</span>
+                        <h2>{{ averia.zona or "Zona no disponible" }}</h2>
+                    </div>
+                    <span class="clientes">
+                        {{ averia.clientes_afectados if averia.clientes_afectados is not none else "N/D" }}
+                        clientes
+                    </span>
+                </div>
