@@ -1,0 +1,43 @@
+id,tipo_accidente,provincia,canton,ruta,descripcion,fecha_hora
+1,Accidente,San José,San José,Ruta 27,"Choque múltiple en el puente de la Comarca, paso lento sentido Escazú.",2026-06-19 07:30
+2,Corte de luz,San José,Tibás,Calle Central,Suspensión del servicio por mantenimiento de CNFL en San Juan.,2026-06-19 08:00
+3,Corte de agua,San José,Desamparados,Interna,Avería en tubería principal deja sin agua el sector de San Rafael Arriba.,2026-06-19 11:15
+4,Tráfico,San José,Montes de Oca,Ruta 2,Alto flujo vehicular y presa pesada en la rotonda de la Hispanidad.,2026-06-19 17:45
+5,Accidente,San José,Pérez Zeledón,Ruta 2,Colisión frontal sobre el Cerro de la Muerte debido a la alta neblina.,2026-06-19 13:20
+6,Corte de luz,San José,Goicoechea,Interna,Avería por choque contra poste del tendido eléctrico en Guadalupe.,2026-06-19 19:10
+7,Accidente,Alajuela,Alajuela,Ruta 1,Choque de tráiler contra la platina en el puente del Virilla, sentido Alajuela.,2026-06-19 06:15
+8,Corte de agua,Alajuela,San Carlos,Interna,Lavado de tanques por parte del AyA interrumpe el servicio en Ciudad Quesada.,2026-06-19 09:00
+9,Tráfico,Alajuela,Alajuela,Ruta 3,Presa masiva en las cercanías del Aeropuerto Juan Santamaría.,2026-06-19 16:30
+10,Corte de luz,Alajuela,Grecia,Interna,Corte programado por Coopelesca afectando el centro urbano.,2026-06-19 13:00
+11,Accidente,Alajuela,Naranjo,Ruta 1,Vuelco de vehículo liviano sobre el puente de la sección de Rosario.,2026-06-19 15:45
+12,Corte de agua,Alajuela,Palmares,Interna,Trabajos de interconexión dejan sin líquido vital al casco central.,2026-06-19 10:30
+13,Tráfico,Cartago,La Unión,Ruta 2,Efecto mirón genera colisión menor y presa en el sector de Ochomogo.,2026-06-19 08:10
+14,Corte de luz,Cartago,Cartago,Interna,Trabajos de JASEC provocan suspensión eléctrica en el barrio Los Ángeles.,2026-06-19 09:00
+15,Accidente,Cartago,Paraíso,Ruta 10,Camión varado obstruye un carril de la carretera hacia Turrialba.,2026-06-19 11:40
+16,Corte de agua,Cartago,El Guarco,Interna,Ruptura de tubo de asbesto deja sin agua potable a Tejar.,2026-06-19 14:00
+17,Accidente,Cartago,Oreamuno,Ruta 219,Desprendimiento de material en la vía principal hacia el Volcán Irazú.,2026-06-19 15:20
+18,Tráfico,Cartago,Cartago,Interna,Congestionamiento severo en los alrededores de la Basílica de Cartago.,2026-06-19 18:00
+19,Corte de agua,Heredia,Heredia,Interna,Trabajos de la ESPH dejan sin agua el sector de San Francisco.,2026-06-19 08:30
+20,Tráfico,Heredia,Belén,Ruta 111,Paso saturado y lento en San Antonio de Belén por hora pico corporativa.,2026-06-19 17:15
+21,Accidente,Heredia,Santo Domingo,Ruta 32,"Choque por alcance saliendo del túnel Zurquí, tránsito completamente paralizado.",2026-06-19 12:00
+22,Corte de luz,Heredia,Barva,Interna,Ramas caídas sobre cables generan apagón temporal en San Pedro de Barva.,2026-06-19 14:45
+23,Accidente,Heredia,San Rafael,Interna,Motociclista derrapa debido al asfalto mojado cerca del Club Castillo.,2026-06-19 16:10
+24,Corte de agua,Heredia,San Pablo,Interna,Reparación imprevista de válvula afecta las urbanizaciones locales.,2026-06-19 10:00
+25,Accidente,Guanacaste,Liberia,Ruta 1,Colisión de un pick-up contra semoviente (vaca) en la Interamericana Norte.,2026-06-19 05:00
+26,Corte de luz,Guanacaste,Nicoya,Interna,Mantenimiento anual de Coopeguanacaste suspende fluido eléctrico.,2026-06-19 08:00
+27,Corte de agua,Guanacaste,Santa Cruz,Interna,Sequía temporal obliga a racionamientos programados de agua en Tamarindo.,2026-06-19 13:00
+28,Tráfico,Guanacaste,Carrillo,Ruta 21,Presas saliendo de Playas del Coco por retorno de turistas.,2026-06-19 16:00
+29,Accidente,Guanacaste,Cañas,Ruta 1,Camión de carga pierde piña de repuesto provocando daños a terceros.,2026-06-19 11:30
+30,Corte de luz,Guanacaste,Tilarán,Interna,Fuertes ráfagas de viento quiebran cruceta y dejan sin luz la zona alta.,2026-06-19 18:45
+31,Tráfico,Puntarenas,Esparza,Ruta 27,Congestionamiento pesado por el peaje de Pozón camino a Caldera.,2026-06-19 15:00
+32,Corte de agua,Puntarenas,Puntarenas,Interna,Avería en la estación de bombeo de Barranca suspende suministro en El Cocal.,2026-06-19 09:30
+33,Accidente,Puntarenas,Garabito,Ruta 34,Colisión menor sobre el puente del Río Tárcoles por mirar los cocodrilos.,2026-06-19 11:00
+34,Corte de luz,Puntarenas,Quepos,Interna,Falla en transformador por humedad deja sin energía el área hotelera de Manuel Antonio.,2026-06-19 20:15
+35,Accidente,Puntarenas,Corredores,Ruta 2,Colisión entre automóvil y colectivo cerca de la línea fronteriza de Paso Canoas.,2026-06-19 14:20
+36,Tráfico,Puntarenas,Osa,Costanera Sur,Tránsito regulado por operativo de control policial del Tránsito.,2026-06-19 10:45
+37,Tráfico,Limón,Limón,Ruta 32,Filas kilométricas de furgones tratando de ingresar a la terminal APM Terminals.,2026-06-19 08:00
+38,Corte de luz,Limón,Pococí,Interna,Ramas caídas por lluvias intensas provocan cortocircuito en Guápiles centro.,2026-06-19 13:40
+39,Accidente,Limón,Siquirres,Ruta 32,Vuelco de contenedor obstaculiza por completo la vía de comunicación principal.,2026-06-19 06:30
+40,Corte de agua,Limón,Talamanca,Interna,Contaminación temporal de pozo obliga a cortar el fluido en Puerto Viejo.,2026-06-19 10:15
+41,Accidente,Limón,Matina,Interna,Colisión entre motocicleta y tren de carga en el cuzle ferroviario.,2026-06-19 12:10
+42,Corte de agua,Limón,Guácimo,Interna,Limpieza de la captación del acueducto por acumulación de barro tras tormenta.,2026-06-19 15:50
