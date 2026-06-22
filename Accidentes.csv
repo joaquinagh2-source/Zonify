@@ -1,4 +1,4 @@
-id,tipo_accidente,provincia,canton,ruta,descripcion,fecha_hora
+ id,tipo_accidente,provincia,canton,ruta,descripcion,fecha_hora
 1,Accidente,San José,San José,Ruta 27,"Choque múltiple en el puente de la Comarca, paso lento sentido Escazú.",2026-06-19 07:30
 2,Corte de luz,San José,Tibás,Calle Central,Suspensión del servicio por mantenimiento de CNFL en San Juan.,2026-06-19 08:00
 3,Corte de agua,San José,Desamparados,Interna,Avería en tubería principal deja sin agua el sector de San Rafael Arriba.,2026-06-19 11:15

@@ -2,10 +2,14 @@ from flask import Flask, render_template, redirect, url_for, request #El flask e
 from geopy.geocoders import Nominatim
 import csv
 import os
+from werkzeug.utils import secure_filename
 
 
 app = Flask(__name__) #basicamente esta linea sirve para que el servidor web exista
-accidentes_cache = [] #Es una lista vacia en la RAM que es para guardar datos temporalmente y hacer la web mas rapida
+accidentes_cache = [] #Es una lista vacia en la RAM que es para guardar datos temporalmente y hacer la web mas 
+
+nombre_limpio = secure_filename(archivo.filename) #Esto limpia el nombre del archivo para que no tenga caracteres raros y no de problemas al guardarlo
+archivo.save(os.path.join('.', nombre_limpio))
 
 COORDENADAS_PROVINCIAS = {
     "San José": {"lat": 9.9333, "lon": -84.0833},
