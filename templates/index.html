@@ -14,15 +14,12 @@
         <div>
             <p class="etiqueta">Zonify · Costa Rica</p>
             <h1>Zonify</h1>
-            <p class="subtitulo">Información unificada de servicios públicos y acontecimientos</p>
+            <p class="subtitulo">Información unificada desde base de datos local</p>
         </div>
 
         <div class="grupo-botones">
             <a href="{{ url_for('actualizar') }}" class="btn-actualizar">
-                Actualizar CNFL
-            </a>
-            <a href="/actualizar" class="btn-actualizar btn-cosevi">
-                Actualizar COSEVI
+                Actualizar Radar
             </a>
         </div>
     </header>
@@ -30,96 +27,85 @@
     <main>
 
         <section class="seccion-bloque">
-            <h2 class="titulo-seccion"> Averías Eléctricas (CNFL)</h2>
+            <h2 class="titulo-seccion">Averías Eléctricas (CNFL)</h2>
 
             <div class="metricas" aria-label="Resumen de averías">
                 <div class="metrica">
-                    <span class="metrica-label">Averías activas</span>
+                    <span class="metrica-label">Incidentes en CSV</span>
                     <strong>{{ averias|length }}</strong>
                 </div>
                 <div class="metrica">
-                    <span class="metrica-label">Clientes afectados</span>
-                    <strong>{{ total_clientes }}</strong>
-                </div>
-                <div class="metrica">
                     <span class="metrica-label">Fuente</span>
-                    <strong>CNFL ArcGIS</strong>
+                    <strong>Accidentes.csv</strong>
                 </div>
             </div>
-
-            {% if error %}
-            <div class="alerta">
-                <strong>No se pudieron cargar las averías.</strong>
-                <span>{{ error }}</span>
-            </div>
-            {% endif %}
 
             {% if averias %}
-            <div class="lista-averias" aria-label="Listado de averías">
+            <div class="lista-averias">
                 {% for averia in averias %}
                 <article class="tarjeta tarjeta-energia">
                     <div class="tarjeta-header">
                         <div>
-                            <span class="id-incidente">{{ averia.id or "Sin ID" }}</span>
-                            <h2>{{ averia.zona or "Zona no disponible" }}</h2>
+                            <span class="id-incidente">{{ averia.id }}</span>
+                            <h2>{{ averia.causa }}</h2>
                         </div>
-                        <span class="clientes">
-                            {{ averia.clientes_afectados if averia.clientes_afectados is not none else "N/D" }} clientes
-                        </span>
                     </div>
-
                     <dl class="detalles">
                         <div>
-                            <dt>Causa</dt>
-                            <dd>{{ averia.causa or "No disponible" }}</dd>
-                        </div>
-                        <div>
-                            <dt>Dirección</dt>
-                            <dd>{{ averia.direccion or "No disponible" }}</dd>
+                            <dt>Hora de Reporte</dt>
+                            <dd>{{ averia.fecha }}</dd>
                         </div>
                     </dl>
-
-                    {% if averia.coordenadas %}
-                    <a class="link-mapa" target="_blank" rel="noopener noreferrer"
-                        href="https://www.google.com/maps/search/?api=1&query={{ averia.coordenadas.y }},{{ averia.coordenadas.x }}">
-                        Ver en mapa
-                    </a>
-                    {% endif %}
                 </article>
                 {% endfor %}
             </div>
             {% else %}
-            {% if not error %}
-            <div class="estado-vacio">No hay averías eléctricas activas en este momento.</div>
-            {% endif %}
+            <div class="estado-vacio">No hay incidentes de CNFL en el archivo.</div>
             {% endif %}
         </section>
 
         <section class="seccion-bloque">
-            <h2 class="titulo-seccion"> Acontecimientos Viales (COSEVI)</h2>
+            <h2 class="titulo-seccion">Cortes de Agua (AyA)</h2>
 
-            <div class="lista-averias" aria-label="Listado de acontecimientos de COSEVI">
+            {% if cortes %}
+            <div class="lista-averias">
+                {% for corte in cortes %}
+                <article class="tarjeta tarjeta-agua">
+                    <div class="tarjeta-header">
+                        <div>
+                            <span class="id-incidente">{{ corte.id }}</span>
+                            <h2>{{ corte.causa }}</h2>
+                        </div>
+                    </div>
+                    <dl class="detalles">
+                        <div>
+                            <dt>Hora de Reporte</dt>
+                            <dd>{{ corte.fecha }}</dd>
+                        </div>
+                    </dl>
+                </article>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="estado-vacio">No hay incidentes de AyA en el archivo.</div>
+            {% endif %}
+        </section>
+
+        <section class="seccion-bloque">
+            <h2 class="titulo-seccion">Acontecimientos Viales (COSEVI)</h2>
+
+            {% if eventos %}
+            <div class="lista-averias">
                 {% for evento in eventos %}
                 <article class="tarjeta tarjeta-cosevi">
                     <div class="tarjeta-header">
                         <div>
                             <span class="id-incidente">Año: {{ evento.anio }}</span>
-                            <h2>{{ evento.tipo }}</h2>
+                            <h2>{{ evento.descripcion }}</h2>
                         </div>
-                        <span class="clientes">
-                            Tránsito
-                        </span>
+                        <span class="clientes">{{ evento.tipo }}</span>
                     </div>
-
                     <dl class="detalles">
-                        <div>
-                            <dt>Ubicación</dt>
-                            <dd>Ruta {{ evento.ruta }}, {{ evento.canton }}, {{ evento.provincia }}</dd>
-                        </div>
-                        <div>
-                            <dt>Datos Demográficos</dt>
-                            <dd>Sexo: {{ evento.sexo }} | Edad: {{ evento.edad }}</dd>
-                        </div>
                         <div>
                             <dt>Fuente</dt>
                             <dd>{{ evento.fuente }}</dd>
@@ -128,10 +114,14 @@
                 </article>
                 {% endfor %}
             </div>
+            {% else %}
+            <div class="estado-vacio">No hay sucesos de tránsito registrados.</div>
+            {% endif %}
         </section>
 
     </main>
- <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
 </html>
