@@ -27,7 +27,7 @@
     <main>
 
         <section class="seccion-bloque">
-            <h2 class="titulo-seccion">Averías Eléctricas (CNFL)</h2>
+            <h2 class="titulo-seccion">Acontecimientos del pais</h2>
 
             <div class="metricas" aria-label="Resumen de averías">
                 <div class="metrica">
@@ -52,6 +52,10 @@
                     </div>
                     <dl class="detalles">
                         <div>
+                            <dt>Ubicación</dt>
+                            <dd>{{ averia.zona }} ({{ averia.direccion }})</dd>
+                        </div>
+                        <div>
                             <dt>Hora de Reporte</dt>
                             <dd>{{ averia.fecha }}</dd>
                         </div>
@@ -60,12 +64,12 @@
                 {% endfor %}
             </div>
             {% else %}
-            <div class="estado-vacio">No hay incidentes de CNFL en el archivo.</div>
+            <div class="estado-vacio">No hay incidentes de energía en el archivo.</div>
             {% endif %}
         </section>
 
         <section class="seccion-bloque">
-            <h2 class="titulo-seccion">Cortes de Agua (AyA)</h2>
+            <h2 class="titulo-seccion">Cortes de Agua (AyA / Asadas)</h2>
 
             {% if cortes %}
             <div class="lista-averias">
@@ -78,6 +82,10 @@
                         </div>
                     </div>
                     <dl class="detalles">
+                        <div>
+                            <dt>Ubicación</dt>
+                            <dd>{{ corte.zona }} ({{ corte.direccion }})</dd>
+                        </div>
                         <div>
                             <dt>Hora de Reporte</dt>
                             <dd>{{ corte.fecha }}</dd>
@@ -92,7 +100,7 @@
         </section>
 
         <section class="seccion-bloque">
-            <h2 class="titulo-seccion">Acontecimientos Viales (COSEVI)</h2>
+            <h2 class="titulo-seccion">Acontecimientos Viales (COSEVI / Tránsito)</h2>
 
             {% if eventos %}
             <div class="lista-averias">
@@ -106,6 +114,18 @@
                         <span class="clientes">{{ evento.tipo }}</span>
                     </div>
                     <dl class="detalles">
+                        <div>
+                            <dt>Ubicación</dt>
+                            <dd><b>Provincia:</b> {{ evento.provincia }} | <b>Cantón:</b> {{ evento.canton }}</dd>
+                        </div>
+                        <div>
+                            <dt>Ruta / Vía</dt>
+                            <dd>{{ evento.ruta }}</dd>
+                        </div>
+                        <div>
+                            <dt>Fecha y Hora</dt>
+                            <dd>{{ evento.fecha_hora }}</dd>
+                        </div>
                         <div>
                             <dt>Fuente</dt>
                             <dd>{{ evento.fuente }}</dd>
