@@ -25,7 +25,15 @@
     </header>
 
     <main>
-
+        <div class="contenedor-buscador">
+            <div class="grupo-input">
+                <label for="buscador-provincia" class="etiqueta-buscador">
+                    Filtrar Radar por Provincia
+                </label>
+                <input type="text" id="buscador-provincia" placeholder="Escribí San José, Alajuela, Cartago, Heredia..."
+                    class="input-buscador" />
+            </div>
+        </div>
         <section class="seccion-bloque">
             <h2 class="titulo-seccion">Acontecimientos del pais</h2>
 
@@ -141,7 +149,7 @@
 
     </main>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/script.js') }}"></script>
 </body>
 
 </html>
